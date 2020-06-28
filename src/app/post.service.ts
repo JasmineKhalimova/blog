@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Post } from './post';
-
+import { Comment } from './comments';
 
 @Injectable({ providedIn: 'root' })
 
@@ -63,19 +63,16 @@ export class PostService {
     );
   }
 
-  /** 
-   * GET all the posts from the server
-   * Sorted by date
-   */
-  getComments(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.commentUrl)
-      .pipe(
-        tap(_ => console.log('fetched comments')),
-        catchError(this.handleError<Post[]>('getComments', []))
+    /** GET comment by id. Will 404 if id not found */
+    getComment(id: number): Observable<Comment> {
+      const url = `${this.commentUrl}/${id}`;
+      return this.http.get<Comment>(url).pipe(
+        tap(_ => console.log(`fetched comment id=${id}`)),
+        catchError(this.handleError<Comment>(`getComment id=${id}`))
       );
-  }
+    }
 
-    /** POST: add a comment to the post */
+    /** POST: add comment to the post */
     addComment(post: Post): Observable<Post> {
       return this.http.post<Post>(this.commentUrl, post, this.httpOptions).pipe(
         tap((newComment: Post) => console.log(`added post w/ id=${newComment.id}`)),

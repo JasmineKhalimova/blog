@@ -1,6 +1,6 @@
 {
-  "name": "blog",
-  "version": "0.0.0",
+  "name": "package.json",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "npm run build & concurrently --kill-others \"npm run api\" \"ng serve\"",
@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "json-server --watch api/db.json --port 9001"
+    "api": "json-server --watch api/db.json --port 9001",
+    "prerender": "ng run blog:prerender"
   },
   "private": true,
   "dependencies": {
@@ -19,20 +20,27 @@
     "@angular/forms": "~10.0.0",
     "@angular/platform-browser": "~10.0.0",
     "@angular/platform-browser-dynamic": "~10.0.0",
+    "@angular/platform-server": "~10.0.0",
     "@angular/router": "~10.0.0",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
+    "@nguniversal/express-engine": "^10.0.0",
     "angular-in-memory-web-api": "^0.11.0",
     "bootstrap": "^4.5.0",
     "concurrently": "^5.2.0",
+    "express": "^4.17.1",
     "json-server": "^0.16.1",
     "rxjs": "~6.5.5",
+    "spdy": "^4.0.2",
     "tslib": "^2.0.0",
+    "webpack": "^4.43.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.0",
     "@angular/cli": "~10.0.0",
     "@angular/compiler-cli": "~10.0.0",
+    "@nguniversal/builders": "^10.0.0",
+    "@types/express": "^4.17.0",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -48,5 +56,17 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.",
+  "main": "1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasmineKhalimova/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JasmineKhalimova/blog/issues"
+  },
+  "homepage": "https://github.com/JasmineKhalimova/blog#readme"
 }

@@ -44,4 +44,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - Additional CSS libaries Boostrap 4 for addicitional css 
     npm install --save bootstrap
-

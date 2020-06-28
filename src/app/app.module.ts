@@ -10,7 +10,7 @@ import { PostCommentsComponent } from './post-comments/post-comments.component';
 
 @NgModule({
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     AppRoutingModule,
     HttpClientModule

@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Post }         from '../post';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService }  from '../post.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Comment } from '../comments';
 
 @Component({
   selector: 'app-post-comments',
   templateUrl: './post-comments.component.html',
   styleUrls: ['./post-comments.component.less']
 })
+
 export class PostCommentsComponent implements OnInit {
 
-  comments: Post[];
+  @Input() comment: Comment;
 
   // temp comment display
   posts = [];
+
   addComment(newComment: string) {
     if (newComment) {
       this.posts.push(newComment);
@@ -28,21 +30,24 @@ export class PostCommentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getComments();
+    this.getComment();
   }
-  getComments(): void {
-    this.postService.getComments()
-    .subscribe(comments => this.comments = comments);
+
+  getComment(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.postService.getComment(id)
+      .subscribe(comment => this.comment = comment);
   }
+
   // add comment
-  add(comment: string): void {
-  comment = comment.trim();
-    if (!comment) { return; }
-      this.postService.addComment({ comment } as Post)
-        .subscribe(comments => {
-          this.comments.push(comments);
-    });
-  }
+  // add(comment: string): void {
+  // comment = comment.trim();
+  //   if (!comment) { return; }
+  //     this.postService.addComment({ comments } as Comment)
+  //       .subscribe(comments => {
+  //         this.comments.push(comments);
+  //   });
+  // }
 
   // // save button
   // save(): void {

@@ -6,8 +6,11 @@
   <li *ngFor="let post of posts" class="list-group-item">
     <a routerLink="/detail/{{post.id}}" class="list-group-item list-group-item-action">
       {{post.publish_date}}
+      |
       {{post.title}}
+      |
       {{post.author}}
+      |
       {{post.description}}
     </a>
   </li>  

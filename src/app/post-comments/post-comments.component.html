@@ -1,4 +1,6 @@
-<label>Comments</label>
+<div *ngIf="comment" class="single_comment">
+<h2 class="mt-3">Comments</h2>
+<div><span>Title: </span>{{comment.content}}</div>
 <input #newComment  
   id="comment" 
   name="comment"
