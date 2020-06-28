@@ -42,4 +42,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Additional CSS libaries Boostrap 4 for addicitional css 
     npm install --save bootstrap
     
-  
+- Notes
+Users can view comments for a blog post - Only single commenents
+Users can add a comment to a blog post - Its working and sending to the json server however its not remianing in the browser
