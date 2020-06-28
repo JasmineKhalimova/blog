@@ -13,15 +13,7 @@ import { Comment } from '../comments';
 export class PostCommentsComponent implements OnInit {
 
   @Input() comment: Comment;
-
-  // temp comment display
-  posts = [];
-
-  addComment(newComment: string) {
-    if (newComment) {
-      this.posts.push(newComment);
-    }
-  }
+  comments = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -40,20 +32,19 @@ export class PostCommentsComponent implements OnInit {
   }
 
   // add comment
-  // add(comment: string): void {
-  // comment = comment.trim();
-  //   if (!comment) { return; }
-  //     this.postService.addComment({ comments } as Comment)
-  //       .subscribe(comments => {
-  //         this.comments.push(comments);
-  //   });
-  // }
-
-  // // save button
-  // save(): void {
-  //   this.postService.updateComment(this.posts)
-  //     .subscribe(() => this.goBack());
-  // }
+  add(content: string): void {
+    content = content.trim();
+    if (!content) { return; }
+    this.postService.addComment({ content } as Comment)
+      .subscribe(comment => {
+        this.comments.push(comment);
+      });
+  }
+    //Delete comment
+    delete(comment: Comment): void {
+      this.comments = this.comments.filter(h => h !== comment);
+      this.postService.deleteHero(comment).subscribe();
+    }
 
   // go back button
   goBack(): void {

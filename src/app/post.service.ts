@@ -73,12 +73,23 @@ export class PostService {
     }
 
     /** POST: add comment to the post */
-    addComment(post: Post): Observable<Post> {
-      return this.http.post<Post>(this.commentUrl, post, this.httpOptions).pipe(
-        tap((newComment: Post) => console.log(`added post w/ id=${newComment.id}`)),
-        catchError(this.handleError<Post>('addComment'))
+    addComment(comment: Comment): Observable<Comment> {
+      return this.http.post<Comment>(this.commentUrl, comment, this.httpOptions).pipe(
+        tap((newComment: Comment) => console.log(`added comment w/ id=${newComment.id}`)),
+        catchError(this.handleError<Comment>('addComment'))
       );
     }
+
+  /** DELETE: delete the comment from the server */
+  deleteHero(hero: Comment | number): Observable<Comment> {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const url = `${this.commentUrl}/${id}`;
+
+    return this.http.delete<Comment>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted hero id=${id}`)),
+      catchError(this.handleError<Comment>('deleteHero'))
+    );
+  }
 
   /**
    * Handle Http operation that failed.
