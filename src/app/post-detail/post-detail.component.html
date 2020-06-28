@@ -1,0 +1,9 @@
+<div *ngIf="post" class="single_post">
+  <h2 class="post_detail_title">{{post.title | uppercase}} Details</h2>
+  <div><span>Title: </span>{{post.title}}</div>
+  <div><span>Author: </span>{{post.author}}</div>
+  <div><span>Date: </span>{{post.publish_date}}</div>
+  <div><span>Description: </span>{{post.description}}</div>
+  <div><span>Content: </span>{{post.content}}</div>
+  <div><app-post-comments></app-post-comments></div> 
+</div>

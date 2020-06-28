@@ -1,0 +1,21 @@
+<label>Comments</label>
+<input #newComment  
+  id="comment" 
+  name="comment"
+  class="form-control" 
+  type="text" 
+  (keyup.enter)="addComment(newComment.value)"
+  (blur)="addComment(newComment.value); newComment.value='' "
+  placeholder="add comment" 
+  aria-label="comment" 
+  aria-describedby="comments"
+  mimlength="4"
+  required>
+<button class="btn btn-warning"  type="button" (click)="addComment(newComment.value)">Add Comment</button>
+<button class="btn btn-info"  type="button" (click)="goBack()">Go Back</button>
+<ul>
+  <li *ngFor="let post of posts">
+    {{post}}
+  </li>
+</ul>
+
