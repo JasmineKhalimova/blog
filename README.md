@@ -44,3 +44,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - Additional CSS libaries Boostrap 4 for addicitional css 
     npm install --save bootstrap
+
+# Remaing stuff
+
+READ, PUT and GET for comments is comeplete however in state only.
+
+GET all items and single page items from json is complete
+
+Input validation is added to comment input field
